@@ -281,15 +281,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Simulate form submission
-            // In production, you would send this data to a server
-            console.log('Form Data:', formData);
+            // Send email using mailto (opens user's email client)
+            const emailSubject = encodeURIComponent(`New Contact Form Submission from ${formData.name}`);
+            const emailBody = encodeURIComponent(
+                `Name: ${formData.name}\n` +
+                `Email: ${formData.email}\n` +
+                `Phone: ${formData.phone}\n` +
+                `Service: ${formData.service}\n` +
+                `Address: ${formData.address}\n` +
+                `Timeline: ${formData.timeline}\n\n` +
+                `Message:\n${formData.message}`
+            );
+            
+            // Open email client with pre-filled information
+            window.location.href = `mailto:sarizpe@gmail.com?subject=${emailSubject}&body=${emailBody}`;
             
             // Show success message
-            showFormMessage('Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
+            showFormMessage('Opening your email client... Please send the email to complete your submission.', 'success');
             
-            // Reset form
-            contactForm.reset();
+            // Reset form after a delay
+            setTimeout(() => {
+                contactForm.reset();
+            }, 2000);
             
             // Scroll to message
             formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
