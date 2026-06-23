@@ -1,0 +1,32 @@
+HOW TO ORGANIZE YOUR GALLERY IMAGES
+====================================
+
+I've created 4 subfolders for you:
+
+📁 bathroom/  - Put all bathroom remodel photos here
+📁 kitchen/   - Put all kitchen tile & counter photos here  
+📁 lawn/      - Put all lawn & landscaping photos here
+📁 hardscape/ - Put all flagstone & brick work photos here
+
+INSTRUCTIONS:
+1. Look at each image in the main gallery folder
+2. Move (drag & drop) each image into the correct subfolder
+3. Once you're done organizing, let me know
+4. I'll update the gallery.html to automatically show all images from each folder
+
+CLEARLY IDENTIFIABLE IMAGES:
+- Wshower.jpg, Wshower2.jpg, Wshower3.jpg → bathroom/
+- tub.jpg → bathroom/
+- Vanity.jpg → bathroom/
+- HexKit.jpg, HexKit2.jpg → kitchen/
+- customnice.jpg → kitchen/
+- floor.jpg → kitchen/
+- SmallRR.jpg, SmallRR2.jpg, SmallRR3.jpg, SmallRR4.jpg → kitchen/
+
+IMAGES YOU NEED TO CATEGORIZE:
+- All the image000000 series files
+- IMG_2491.JPG, IMG_2493.JPG
+- glassvan.jpg (probably don't use this in gallery)
+- fakepic.webp (probably don't use this in gallery)
+
+After you organize them, I'll update the website to pull from these folders automatically!
