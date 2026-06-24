@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Add animation classes to elements (but NOT gallery-item to avoid conflict)
-    const fadeInElements = document.querySelectorAll('.service-card, .feature, .reason-card, .process-step');
+    const fadeInElements = document.querySelectorAll('.service-card, .feature, .reason-card, .process-step, .service-detail');
     fadeInElements.forEach((el, index) => {
         el.classList.add('fade-in');
         scrollObserver.observe(el);
