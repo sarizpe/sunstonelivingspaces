@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showFormMessage('Sending your message...', 'info');
             
             // Send email using EmailJS
-            emailjs.send('service_d35yapc', 'template_h3w6dwz', formData)
+            emailjs.send('service_zxjnl7t', 'template_h3w6dwz', formData)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     showFormMessage('Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
