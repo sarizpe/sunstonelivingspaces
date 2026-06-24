@@ -257,8 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 service: document.getElementById('service').value,
                 address: document.getElementById('address').value,
                 timeline: document.getElementById('timeline').value,
-                message: document.getElementById('message').value,
-                newsletter: document.getElementById('newsletter').checked
+                message: document.getElementById('message').value
             };
             
             // Basic validation
@@ -281,31 +280,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Send email using mailto (opens user's email client)
-            const emailSubject = encodeURIComponent(`New Contact Form Submission from ${formData.name}`);
-            const emailBody = encodeURIComponent(
-                `Name: ${formData.name}\n` +
-                `Email: ${formData.email}\n` +
-                `Phone: ${formData.phone}\n` +
-                `Service: ${formData.service}\n` +
-                `Address: ${formData.address}\n` +
-                `Timeline: ${formData.timeline}\n\n` +
-                `Message:\n${formData.message}`
-            );
+            // Show sending message
+            showFormMessage('Sending your message...', 'info');
             
-            // Open email client with pre-filled information
-            window.location.href = `mailto:sarizpe@gmail.com?subject=${emailSubject}&body=${emailBody}`;
-            
-            // Show success message
-            showFormMessage('Opening your email client... Please send the email to complete your submission.', 'success');
-            
-            // Reset form after a delay
-            setTimeout(() => {
-                contactForm.reset();
-            }, 2000);
-            
-            // Scroll to message
-            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            // Send email using EmailJS
+            emailjs.send('service_d35yapc', 'template_h3w6dwz', formData)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    showFormMessage('Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
+                    contactForm.reset();
+                    formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    showFormMessage('Sorry, there was an error sending your message. Please try again or call us directly.', 'error');
+                });
         });
     }
     
