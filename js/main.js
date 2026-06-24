@@ -250,14 +250,74 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const address = document.getElementById('address').value;
+            const timeline = document.getElementById('timeline').value;
+            const message = document.getElementById('message').value;
+            
+            // Create HTML formatted email content
+            const htmlContent = `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h2 style="color: #2E5D34; border-bottom: 2px solid #2E5D34; padding-bottom: 10px;">
+                        New Contact Form Submission
+                    </h2>
+                    
+                    <h3 style="color: #2E5D34; margin-top: 25px; margin-bottom: 10px;">Contact Information</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr style="background-color: #f9f9f9;">
+                            <td style="padding: 10px; font-weight: bold; width: 120px; border: 1px solid #ddd;">Name:</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${name}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; font-weight: bold; border: 1px solid #ddd;">Email:</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:${email}">${email}</a></td>
+                        </tr>
+                        <tr style="background-color: #f9f9f9;">
+                            <td style="padding: 10px; font-weight: bold; border: 1px solid #ddd;">Phone:</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"><a href="tel:${phone}">${phone}</a></td>
+                        </tr>
+                    </table>
+                    
+                    <h3 style="color: #2E5D34; margin-top: 25px; margin-bottom: 10px;">Project Details</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr style="background-color: #f9f9f9;">
+                            <td style="padding: 10px; font-weight: bold; width: 120px; border: 1px solid #ddd;">Service:</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${service}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; font-weight: bold; border: 1px solid #ddd;">Address:</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${address || 'Not provided'}</td>
+                        </tr>
+                        <tr style="background-color: #f9f9f9;">
+                            <td style="padding: 10px; font-weight: bold; border: 1px solid #ddd;">Timeline:</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${timeline || 'Not specified'}</td>
+                        </tr>
+                    </table>
+                    
+                    <h3 style="color: #2E5D34; margin-top: 25px; margin-bottom: 10px;">Message</h3>
+                    <div style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #2E5D34; border: 1px solid #ddd;">
+                        ${message.replace(/\n/g, '<br>')}
+                    </div>
+                    
+                    <hr style="margin-top: 30px; border: none; border-top: 1px solid #ddd;">
+                    <p style="color: #666; font-size: 12px; text-align: center; margin-top: 20px;">
+                        This message was sent from sunstonelivingspaces.com
+                    </p>
+                </div>
+            `;
+            
             const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                service: document.getElementById('service').value,
-                address: document.getElementById('address').value,
-                timeline: document.getElementById('timeline').value,
-                message: document.getElementById('message').value
+                name: name,
+                email: email,
+                phone: phone,
+                service: service,
+                address: address,
+                timeline: timeline,
+                message: message,
+                html_content: htmlContent
             };
             
             // Basic validation
